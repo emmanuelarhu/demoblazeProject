@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import data.TestData;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -29,10 +30,10 @@ public class HomePage extends BasePage {
     private final SelenideElement monitorsLink = $(byLinkText("Monitors"));
 
     // Product elements
-    private final SelenideElement firstProductCard = $(".card > a");
+    private final SelenideElement firstProductCard = $("#tbodyid .card:first-child");
     private final SelenideElement samsungGalaxyS6Link = $(byLinkText("Samsung galaxy s6"));
-    private final SelenideElement nokiaLumiaLink = $(byLinkText("Nokia lumia"));
-    private final SelenideElement nexusLink = $(byLinkText("Nexus"));
+    private final SelenideElement nokiaLumiaLink = $(byLinkText("Nokia lumia 1520"));
+    private final SelenideElement nexusLink = $(byLinkText("Nexus 6"));
     private final SelenideElement samsungGalaxyS7Link = $(byLinkText("Samsung galaxy s7"));
     private final SelenideElement iphone6Link = $(byLinkText("Iphone 6 32gb"));
     private final SelenideElement sonyXperiaZ5Link = $(byLinkText("Sony xperia z5"));
@@ -45,9 +46,9 @@ public class HomePage extends BasePage {
     private final SelenideElement nextButton = $("#next2");
 
     // Footer elements
-    private final SelenideElement aboutUsText = $(byText("About Us We believe"));
+    private final SelenideElement aboutUsText = $(byText("About Us"));
     private final SelenideElement getInTouchText = $(byText("Get in Touch"));
-    private final SelenideElement footerProductStoreHeading = $("h4").$(byText("PRODUCT STORE"));
+    private final SelenideElement footerProductStoreHeading = $(byText("PRODUCT STORE"));
     private final SelenideElement addressText = $(byText("Address: 2390 El Camino Real"));
     private final SelenideElement phoneText = $(byText("Phone: +440"));
     private final SelenideElement emailText = $(byText("Email: demo@blazemeter.com"));
@@ -55,6 +56,7 @@ public class HomePage extends BasePage {
     /**
      * Navigate to the DemoBlaze homepage
      */
+    @Step("Navigate to DemoBlaze homepage")
     public void navigateToHomePage() {
         logger.info("Navigating to DemoBlaze homepage");
         goTo(TestData.BASE_URL);
@@ -64,6 +66,7 @@ public class HomePage extends BasePage {
     /**
      * Click on Login link
      */
+    @Step("Click Login link")
     public void clickLogin() {
         logger.info("Clicking Login link");
         clickElement(loginLink);
@@ -72,6 +75,7 @@ public class HomePage extends BasePage {
     /**
      * Click on Signup link
      */
+    @Step("Click Signup link")
     public void clickSignup() {
         logger.info("Clicking Signup link");
         clickElement(signupLink);
@@ -80,6 +84,7 @@ public class HomePage extends BasePage {
     /**
      * Click on Contact link
      */
+    @Step("Click Contact link")
     public void clickContact() {
         logger.info("Clicking Contact link");
         clickElement(contactLink);
@@ -88,6 +93,7 @@ public class HomePage extends BasePage {
     /**
      * Click on About Us link
      */
+    @Step("Click About Us link")
     public void clickAboutUs() {
         logger.info("Clicking About Us link");
         clickElement(aboutUsLink);
@@ -96,6 +102,7 @@ public class HomePage extends BasePage {
     /**
      * Click on Cart link
      */
+    @Step("Click Cart link")
     public void clickCart() {
         logger.info("Clicking Cart link");
         clickElement(cartLink);
@@ -104,6 +111,7 @@ public class HomePage extends BasePage {
     /**
      * Click on Logout link
      */
+    @Step("Click Logout link")
     public void clickLogout() {
         logger.info("Clicking Logout link");
         clickElement(logoutLink);

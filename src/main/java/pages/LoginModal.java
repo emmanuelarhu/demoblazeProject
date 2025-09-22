@@ -10,13 +10,22 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class LoginModal extends BasePage {
 
-    private final SelenideElement modalTitle = $(byText("Log in ×"));
+    private final SelenideElement modalDialog = $("#logInModal");
+    private final SelenideElement modalTitle = $("#logInModalLabel");
     private final SelenideElement usernameField = $("#loginusername");
     private final SelenideElement passwordField = $("#loginpassword");
-    private final SelenideElement usernameLabel = $("[aria-labelledby='logInModalLabel']").$("form").$("div").$(byText("Username:"));
-    private final SelenideElement passwordLabel = $("[aria-labelledby='logInModalLabel']").$("form").$("div").$(byText("Password:"));
-    private final SelenideElement loginButton = $("button").$(byText("Log in"));
-    private final SelenideElement closeButton = $("[aria-labelledby='logInModalLabel']").$(byText("Close"));
+    private final SelenideElement usernameLabel = $("label[for='loginusername']");
+    private final SelenideElement passwordLabel = $("label[for='loginpassword']");
+    private final SelenideElement loginButton = $("#logInModal .btn-primary");
+    private final SelenideElement closeButton = $("#logInModal .btn-secondary");
+
+    /**
+     * Wait for login modal to be visible
+     */
+    public void waitForModalToLoad() {
+        waitForElementToBeVisible(modalDialog);
+        waitForElementToBeVisible(usernameField);
+    }
 
     /**
      * Perform login with provided credentials
@@ -25,6 +34,7 @@ public class LoginModal extends BasePage {
      */
     public void login(String username, String password) {
         logger.info("Performing login with username: {}", username);
+        waitForModalToLoad();
         fillInput(usernameField, username);
         fillInput(passwordField, password);
         clickElement(loginButton);
@@ -39,6 +49,7 @@ public class LoginModal extends BasePage {
     }
 
     // Getter methods for verification
+    public SelenideElement getModalDialog() { return modalDialog; }
     public SelenideElement getModalTitle() { return modalTitle; }
     public SelenideElement getUsernameField() { return usernameField; }
     public SelenideElement getPasswordField() { return passwordField; }

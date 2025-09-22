@@ -1,6 +1,10 @@
 package tests;
 
 import data.TestData;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -10,9 +14,13 @@ import static com.codeborne.selenide.Selectors.byText;
 /**
  * HomePage test class containing tests for homepage elements and layout
  */
+@Epic("DemoBlaze E-commerce")
+@Feature("Homepage")
 public class HomePageTest extends BaseTest {
 
     @Test(description = "Verify homepage elements and layout")
+    @Story("Homepage Elements Verification")
+    @Description("Verify that all homepage elements including navigation, products, and footer are visible and properly displayed")
     public void verifyHomepageElementsAndLayout() {
         logger.info("Starting homepage elements verification test");
 

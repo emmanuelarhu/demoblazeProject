@@ -10,15 +10,16 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class ContactModal extends BasePage {
 
-    private final SelenideElement modalTitle = $("h4").$(byText("New message"));
+    private final SelenideElement modalDialog = $("#exampleModal");
+    private final SelenideElement modalTitle = $("#exampleModalLabel");
     private final SelenideElement contactEmailField = $("#recipient-email");
     private final SelenideElement contactNameField = $("#recipient-name");
     private final SelenideElement messageField = $("#message-text");
-    private final SelenideElement contactEmailLabel = $("[aria-labelledby='exampleModalLabel']").$("form").$("div").$(byText("Contact Email:"));
-    private final SelenideElement contactNameLabel = $("[aria-labelledby='exampleModalLabel']").$("form").$("div").$(byText("Contact Name:"));
-    private final SelenideElement messageLabel = $("[aria-labelledby='exampleModalLabel']").$("form").$("div").$(byText("Message:"));
-    private final SelenideElement sendMessageButton = $("button").$(byText("Send message"));
-    private final SelenideElement closeButton = $("[aria-labelledby='exampleModalLabel']").$(byText("Close"));
+    private final SelenideElement contactEmailLabel = $("label[for='recipient-email']");
+    private final SelenideElement contactNameLabel = $("label[for='recipient-name']");
+    private final SelenideElement messageLabel = $("label[for='message-text']");
+    private final SelenideElement sendMessageButton = $("#exampleModal .btn-primary");
+    private final SelenideElement closeButton = $("#exampleModal .btn-secondary");
 
     /**
      * Send message with provided details

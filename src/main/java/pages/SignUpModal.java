@@ -10,13 +10,22 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class SignUpModal extends BasePage {
 
-    private final SelenideElement modalTitle = $(byText("Sign up ×"));
+    private final SelenideElement modalDialog = $("#signInModal");
+    private final SelenideElement modalTitle = $("#signInModalLabel");
     private final SelenideElement usernameField = $("#sign-username");
     private final SelenideElement passwordField = $("#sign-password");
-    private final SelenideElement usernameLabel = $("[aria-labelledby='signInModalLabel']").$("form").$("div").$(byText("Username:"));
-    private final SelenideElement passwordLabel = $("[aria-labelledby='signInModalLabel']").$("form").$("div").$(byText("Password:"));
-    private final SelenideElement signUpButton = $("button").$(byText("Sign up"));
-    private final SelenideElement closeButton = $("[aria-labelledby='signInModalLabel']").$(byText("Close"));
+    private final SelenideElement usernameLabel = $("label[for='sign-username']");
+    private final SelenideElement passwordLabel = $("label[for='sign-password']");
+    private final SelenideElement signUpButton = $("#signInModal .btn-primary");
+    private final SelenideElement closeButton = $("#signInModal .btn-secondary");
+
+    /**
+     * Wait for signup modal to be visible
+     */
+    public void waitForModalToLoad() {
+        waitForElementToBeVisible(modalDialog);
+        waitForElementToBeVisible(usernameField);
+    }
 
     /**
      * Perform signup with provided credentials
@@ -25,12 +34,13 @@ public class SignUpModal extends BasePage {
      */
     public void signUp(String username, String password) {
         logger.info("Performing signup with username: {}", username);
+        waitForModalToLoad();
         fillInput(usernameField, username);
         fillInput(passwordField, password);
+        clickElement(signUpButton);
 
         // Handle potential alert dialog
         handleAlert();
-        clickElement(signUpButton);
     }
 
     /**

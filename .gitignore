@@ -1,0 +1,16 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/.idea
+/.vscode
+/target
+/CLAUDE.md
+/SELENIDE_README.md
+/SAMPLE_CONVERSION.md
+/CONVERSION_SUMMARY.md
+/demoblaze-selenide-tests.iml
+/build

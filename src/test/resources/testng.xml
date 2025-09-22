@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="DemoBlaze Test Suite" parallel="methods" thread-count="4">
+    <test name="DemoBlaze Tests">
+        <classes>
+            <class name="tests.HomePageTest"/>
+            <class name="tests.LoginModalTest"/>
+            <class name="tests.SignUpModalTest"/>
+            <class name="tests.ContactModalTest"/>
+            <class name="tests.AboutUsModalTest"/>
+            <class name="tests.LogOutModalTest"/>
+            <class name="tests.CartPageTest"/>
+        </classes>
+    </test>
+</suite>
